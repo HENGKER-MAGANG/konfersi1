@@ -7,18 +7,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen flex items-center justify-center font-sans">
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen flex items-center justify-center font-sans px-4">
 
-  <div class="bg-white shadow-2xl rounded-xl p-8 max-w-xl w-full">
-    <h1 class="text-3xl font-bold text-center text-blue-800 mb-6 flex items-center justify-center gap-2">
-      <i class="fa-solid fa-money-bill-transfer"></i>
+  <div class="bg-white shadow-2xl rounded-2xl p-6 sm:p-8 max-w-md w-full">
+    <h1 class="text-2xl sm:text-3xl font-bold text-center text-blue-800 mb-6 flex items-center justify-center gap-2">
+      <i class="fa-solid fa-money-bill-transfer text-xl sm:text-2xl"></i>
       Konversi Mata Uang
     </h1>
 
-    <form method="POST" class="space-y-5">
+    <form method="POST" class="space-y-4 sm:space-y-5">
       <div>
         <label class="block text-sm font-semibold text-gray-700 mb-1">🛠 Mode Konversi:</label>
-        <select name="mode" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
+        <select name="mode" class="w-full p-2.5 sm:p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 text-sm sm:text-base">
           <option value="1" {% if selected_mode == '1' %}selected{% endif %}>💸 Mata Uang ke IDR</option>
           <option value="2" {% if selected_mode == '2' %}selected{% endif %}>💰 IDR ke Mata Uang</option>
         </select>
@@ -26,7 +26,7 @@
 
       <div>
         <label class="block text-sm font-semibold text-gray-700 mb-1">💱 Pilih Mata Uang:</label>
-        <select name="pilih" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
+        <select name="pilih" class="w-full p-2.5 sm:p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 text-sm sm:text-base">
           {% for i in range(mata_uang|length) %}
             <option value="{{ i }}">{{ mata_uang[i] }}</option>
           {% endfor %}
@@ -36,21 +36,21 @@
       <div>
         <label class="block text-sm font-semibold text-gray-700 mb-1">🔢 Jumlah:</label>
         <input type="number" name="jumlah" step="any" required
-               class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
+               class="w-full p-2.5 sm:p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                placeholder="Masukkan jumlah uang">
       </div>
 
       <div class="text-center">
         <button type="submit"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition duration-200">
+                class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg font-semibold shadow-md transition duration-200 text-sm sm:text-base">
           🔄 Konversi Sekarang
         </button>
       </div>
     </form>
 
     {% if hasil %}
-    <div class="mt-6 bg-green-100 text-green-800 p-4 rounded-lg shadow-inner animate-pulse">
-      <p class="text-lg font-semibold text-center">✅ Hasil: {{ hasil }}</p>
+    <div class="mt-6 bg-green-100 text-green-800 p-4 rounded-lg shadow-inner animate-fade-in">
+      <p class="text-base sm:text-lg font-semibold text-center">✅ Hasil: {{ hasil }}</p>
     </div>
     {% endif %}
   </div>
