@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__)
 
@@ -67,4 +68,5 @@ def suhu_converter():
     return render_template("suhu.html", suhu_list=suhu_list, result=result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 3000))
+    app.run(debug=False, host='0.0.0.0', port=port)
