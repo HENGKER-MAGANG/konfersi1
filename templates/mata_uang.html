@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <title>Konversi Mata Uang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #60a5fa, #1e3a8a);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-white font-sans">
+
+  <!-- Header -->
+  <header class="text-center py-10 px-4">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-md">💱 Konversi Mata Uang</h1>
+    <p class="text-blue-100 mt-2 text-base sm:text-lg">Ubah mata uang asing ke Rupiah dan sebaliknya dengan mudah</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-4 pb-10">
+    <div class="bg-white text-gray-800 rounded-3xl shadow-2xl p-6 sm:p-10 w-full max-w-md space-y-6">
+
+      <form method="POST" class="space-y-5">
+        <!-- Mode Konversi -->
+        <div>
+          <label class="block font-semibold text-gray-700 mb-2">Mode Konversi</label>
+          <select name="mode" required class="w-full p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="1">💰 Ke Rupiah</option>
+            <option value="2">🌍 Dari Rupiah</option>
+          </select>
+        </div>
+
+        <!-- Pilih Mata Uang -->
+        <div>
+          <label class="block font-semibold text-gray-700 mb-2">Pilih Mata Uang</label>
+          <select name="pilih" required class="w-full p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            {% for i in range(mata_uang|length) %}
+              <option value="{{ i }}">{{ mata_uang[i] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Jumlah -->
+        <div>
+          <label class="block font-semibold text-gray-700 mb-2">Jumlah</label>
+          <input type="number" name="jumlah" step="any" required placeholder="Masukkan jumlah..." class="w-full p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <!-- Tombol Konversi -->
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-xl font-bold text-lg shadow-md hover:opacity-90 transition">
+          🔁 Konversi Sekarang
+        </button>
+      </form>
+
+      <!-- Hasil -->
+      {% if hasil %}
+      <div class="bg-blue-100 border border-blue-300 p-4 rounded-lg text-blue-700 text-center font-semibold shadow-sm">
+        💡 Hasil: {{ hasil }}
+      </div>
+      {% endif %}
+
+      <!-- Kembali -->
+      <div class="text-center">
+        <a href="/" class="text-blue-600 hover:underline font-medium">← Kembali ke Halaman Utama</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-xs sm:text-sm text-gray-200 py-5 border-t border-blue-800 bg-blue-900 bg-opacity-30">
+    &copy; 2025 <span class="font-semibold text-white">Ikhsan Pratama</span> | SMKN 2 PINRANG
+  </footer>
+
+</body>
+</html>
